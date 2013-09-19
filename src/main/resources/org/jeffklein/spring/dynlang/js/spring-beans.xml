@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:lang="http://www.springframework.org/schema/lang-js"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+                           http://www.springframework.org/schema/lang-js classpath:org/jeffklein/spring/dynlang/js/spring-lang-3.0.xsd">
+
+    <lang:js id="javaScriptHelloService" script-interfaces="org.jeffklein.spring.dynlang.js.HelloService">
+        <lang:inline-script>
+            function hello(name) {
+                return "Hello, " + name + "!"
+            }
+
+            function helloParameterized(name, effectiveDate, age, locale) {
+                return "" + effectiveDate + ": " + name + " (" + (age + 1) + ", " +
+                locale.getDisplayCountry(java.util.Locale.US) + ")"
+            }
+        </lang:inline-script>l
+    </lang:js>
+
+</beans>
