@@ -14,7 +14,7 @@
                 return "" + effectiveDate + ": " + name + " (" + (age + 1) + ", " +
                 locale.getDisplayCountry(java.util.Locale.US) + ")"
             }
-        </lang:inline-script>l
+        </lang:inline-script>
     </lang:js>
 
 </beans>
