@@ -1,7 +1,7 @@
 package org.jeffklein.spring.dynlang.gosu;
 
 import org.jeffklein.spring.dynlang.ScriptFactoryBase;
-import org.jeffklein.spring.dynlang.js.JavaScriptInvocationHandler;
+import org.jeffklein.spring.dynlang.ScriptInvocationHandlerFactory;
 import org.springframework.scripting.ScriptCompilationException;
 import org.springframework.scripting.ScriptFactory;
 import org.springframework.scripting.ScriptSource;
@@ -17,7 +17,7 @@ public class GosuScriptFactory extends ScriptFactoryBase implements ScriptFactor
 
     public Object getScriptedObject(ScriptSource scriptSource, Class[] actualInterfaces) throws IOException, ScriptCompilationException {
         try {
-            return JavaScriptInvocationHandler.createJavaScriptProxy(scriptSource.getScriptAsString(), actualInterfaces);
+            return ScriptInvocationHandlerFactory.createProxy(actualInterfaces, new GosuScriptInvocationHandler(scriptSource.getScriptAsString()));
         } catch (ScriptException e) {
             throw new ScriptCompilationException(scriptSource, e);
         }

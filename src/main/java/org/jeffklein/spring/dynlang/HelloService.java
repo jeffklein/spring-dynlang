@@ -1,4 +1,4 @@
-package org.jeffklein.spring.dynlang.js;
+package org.jeffklein.spring.dynlang;
 
 import java.util.Date;
 import java.util.Locale;
@@ -10,7 +10,7 @@ import java.util.Locale;
  * Time: 4:16 PM
  * To change this template use File | Settings | File Templates.
  */
-public interface JavaScriptHelloService {
+public interface HelloService {
     String hello(String name);
     double addTwoNumbers(double int1, double int2);
     void setLocale(Locale locale);

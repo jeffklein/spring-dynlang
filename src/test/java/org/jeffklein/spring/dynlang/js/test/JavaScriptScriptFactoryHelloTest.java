@@ -1,6 +1,6 @@
 package org.jeffklein.spring.dynlang.js.test;
 
-import org.jeffklein.spring.dynlang.js.JavaScriptHelloService;
+import org.jeffklein.spring.dynlang.HelloService;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -25,18 +25,18 @@ public class JavaScriptScriptFactoryHelloTest {
 
     @Autowired(required = true)
     @Qualifier(value = "inlineJavascriptHelloService")
-    private JavaScriptHelloService inlineJavascriptHelloService;
+    private HelloService inlineJavascriptHelloService;
 
     @Autowired(required = true)
     @Qualifier(value = "classpathJavascriptHelloService")
-    private JavaScriptHelloService classpathJavascriptHelloService;
+    private HelloService classpathJavascriptHelloService;
 
     @Test
     public void testHelloFromJsMaster() throws Exception {
         testHelloFromJs(inlineJavascriptHelloService);
         testHelloFromJs(classpathJavascriptHelloService);
     }
-    private void testHelloFromJs(JavaScriptHelloService helloService) throws Exception {
+    private void testHelloFromJs(HelloService helloService) throws Exception {
         final String name = "World";
         final String result = helloService.hello(name);
         System.out.println("Result from JS: "+result);
@@ -49,7 +49,7 @@ public class JavaScriptScriptFactoryHelloTest {
         testAddTwoInts(inlineJavascriptHelloService);
         testAddTwoInts(classpathJavascriptHelloService);
     }
-    private void testAddTwoInts(JavaScriptHelloService helloService) throws Exception {
+    private void testAddTwoInts(HelloService helloService) throws Exception {
         final double num1 = 23.2;
         final double num2 = 44.0;
         double result = helloService.addTwoNumbers(num1, num2);
@@ -63,7 +63,7 @@ public class JavaScriptScriptFactoryHelloTest {
         testPropertyInjection(inlineJavascriptHelloService);
         testPropertyInjection(classpathJavascriptHelloService);
     }
-    private void testPropertyInjection(JavaScriptHelloService helloService) {
+    private void testPropertyInjection(HelloService helloService) {
         final Date dateFromJava = new Date();
         Date dateFromJs = helloService.getDate();
         Assert.assertNotNull(dateFromJs);
@@ -76,7 +76,7 @@ public class JavaScriptScriptFactoryHelloTest {
         testChangeLocaleViaSetter(inlineJavascriptHelloService);
         testChangeLocaleViaSetter(classpathJavascriptHelloService);
     }
-    private void testChangeLocaleViaSetter(JavaScriptHelloService helloService) {
+    private void testChangeLocaleViaSetter(HelloService helloService) {
         Locale localeBeforeSetter = helloService.getLocale();
         Assert.assertNotNull(localeBeforeSetter);
         Assert.assertEquals(Locale.US, localeBeforeSetter);
