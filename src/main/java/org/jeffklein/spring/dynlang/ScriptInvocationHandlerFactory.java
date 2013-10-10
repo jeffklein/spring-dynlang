@@ -15,8 +15,8 @@ import java.lang.reflect.Proxy;
  * To change this template use File | Settings | File Templates.
  */
 public class ScriptInvocationHandlerFactory {
-    public static HelloService createProxy(Class[] actualInterfaces, InvocationHandler handler) throws IOException, ScriptException {
-        return (HelloService) Proxy.newProxyInstance(
+    public static Object createProxy(Class[] actualInterfaces, InvocationHandler handler) throws IOException, ScriptException {
+        return Proxy.newProxyInstance(
                 ClassUtils.getDefaultClassLoader(),
                 actualInterfaces,
                 handler

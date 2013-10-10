@@ -1,7 +1,50 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+       xmlns:lang="http://www.springframework.org/schema/lang-js"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+                           http://www.springframework.org/schema/lang-js classpath:org/jeffklein/spring/dynlang/js/spring-lang-3.0.xsd">
 
     <import resource="classpath:org/jeffklein/spring/dynlang/js/spring-beans.xml"/>
 
+    <lang:js id="inlineJavascriptHelloService" script-interfaces="org.jeffklein.spring.dynlang.js.test.HelloService">
+        <lang:inline-script>
+            var date
+            var locale
+            function hello(name) {
+                return "Hello, " + name + "!"
+            }
+            function addTwoNumbers(num1, num2) {
+                return num1 + num2
+            }
+            function setDate(date) {
+                print('date in js: ' + date.toString() + '\n')
+                this.date = date
+            }
+            function getDate() {
+                return this.date
+            }
+            function setLocale(locale) {
+                print('locale in js: ' + locale.toString() + '\n')
+                this.locale = locale
+            }
+            function getLocale() {
+                return this.locale
+            }
+        </lang:inline-script>
+        <lang:property name="date" ref="javaDate"/>
+        <lang:property name="locale" ref="javaLocale_US"/>
+    </lang:js>
+
+    <lang:js id="classpathJavascriptHelloService"
+             script-source="classpath:org/jeffklein/spring/dynlang/js/test/Hello.js"
+             script-interfaces="org.jeffklein.spring.dynlang.js.test.HelloService">
+        <lang:property name="date" ref="javaDate"/>
+        <lang:property name="locale" ref="javaLocale_US"/>
+    </lang:js>
+
+    <bean id="javaDate" class="java.util.Date"/>
+    <bean id="javaLocale_US" class="java.util.Locale">
+        <constructor-arg index="0" value="en" />
+        <constructor-arg index="1" value="US" />
+    </bean>
 </beans>

@@ -1,6 +1,5 @@
 package org.jeffklein.spring.dynlang.js.test;
 
-import org.jeffklein.spring.dynlang.HelloService;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;

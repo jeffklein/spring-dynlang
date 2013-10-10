@@ -1,4 +1,4 @@
-package org.jeffklein.spring.dynlang;
+package org.jeffklein.spring.dynlang.js.test;
 
 import java.util.Date;
 import java.util.Locale;
