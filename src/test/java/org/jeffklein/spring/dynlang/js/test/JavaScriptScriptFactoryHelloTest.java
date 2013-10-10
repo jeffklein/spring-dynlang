@@ -5,6 +5,7 @@ import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
@@ -22,34 +23,69 @@ import java.util.Locale;
 @ContextConfiguration({"classpath:org/jeffklein/spring/dynlang/js/test/spring-beans-test.xml"})
 public class JavaScriptScriptFactoryHelloTest {
 
-    @Autowired
-    private HelloService javaScriptHelloService;
+    @Autowired(required = true)
+    @Qualifier(value = "inlineJavascriptHelloService")
+    private HelloService inlineJavascriptHelloService;
+
+    @Autowired(required = true)
+    @Qualifier(value = "classpathJavascriptHelloService")
+    private HelloService classpathJavascriptHelloService;
 
     @Test
-    public void testHelloFromJs() throws Exception {
+    public void testHelloFromJsMaster() throws Exception {
+        testHelloFromJs(inlineJavascriptHelloService);
+        testHelloFromJs(classpathJavascriptHelloService);
+    }
+
+    private void testHelloFromJs(HelloService helloService) throws Exception {
         final String name = "World";
-        final String result = javaScriptHelloService.hello(name);
+        final String result = helloService.hello(name);
         System.out.println("Result from JS: "+result);
         Assert.assertNotNull(result);
         Assert.assertTrue(result.equals("Hello, World!"));
     }
 
     @Test
-    public void testHelloParameterizedFromJs() throws Exception {
-        final String name = "Jeff";
-        final int age = 44;
-        String result = javaScriptHelloService.helloParameterized(name, age, Locale.US);
+    public void testAddTwoIntsMaster() throws Exception {
+        testAddTwoInts(inlineJavascriptHelloService);
+        testAddTwoInts(classpathJavascriptHelloService);
+    }
+
+    private void testAddTwoInts(HelloService helloService) throws Exception {
+        final double num1 = 23.2;
+        final double num2 = 44.0;
+        double result = helloService.addTwoNumbers(num1, num2);
         System.out.println("Result from JS: "+result);
         Assert.assertNotNull(result);
+        Assert.assertEquals(67.2, result, 1e-15);
     }
 
     @Test
-    public void testPropertyInjection() {
+    public void testPropertyInjectionMaster() {
+        testPropertyInjection(inlineJavascriptHelloService);
+        testPropertyInjection(classpathJavascriptHelloService);
+    }
+
+    private void testPropertyInjection(HelloService helloService) {
         final Date dateFromJava = new Date();
-        //javaScriptHelloService.setDate(date);
-        Date dateFromJs = javaScriptHelloService.getDate();
+        Date dateFromJs = helloService.getDate();
         Assert.assertNotNull(dateFromJs);
         // these are not the same date: one is created by spring. the other by this test.
-        Assert.assertNotSame(dateFromJava, dateFromJs);
+        Assert.assertNotSame(dateFromJava.getTime(), dateFromJs.getTime());
+    }
+
+    @Test
+    public void testChangeLocaleViaSetterMaster() {
+        testChangeLocaleViaSetter(inlineJavascriptHelloService);
+        testChangeLocaleViaSetter(classpathJavascriptHelloService);
+    }
+    private void testChangeLocaleViaSetter(HelloService helloService) {
+        Locale localeBeforeSetter = helloService.getLocale();
+        Assert.assertNotNull(localeBeforeSetter);
+        Assert.assertEquals(Locale.US, localeBeforeSetter);
+        helloService.setLocale(Locale.CANADA);
+        Locale localeAfterSetter = helloService.getLocale();
+        Assert.assertNotNull(localeAfterSetter);
+        Assert.assertEquals(Locale.CANADA, localeAfterSetter);
     }
 }
