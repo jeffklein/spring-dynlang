@@ -23,15 +23,13 @@ public class JavaScriptScriptFactoryHelloTest {
     private HelloService javaScriptHelloService;
 
     @Test
-    public void shouldReturnHelloStringFromJs() throws Exception {
+    public void testHelloWorldFromJs() throws Exception {
 
-        final String name = "Tomek";
-
+        final String name = "World";
         final String result = javaScriptHelloService.hello(name);
-
+        System.out.println("Result from JS: "+result);
         Assert.assertNotNull(result);
-
-        Assert.assertTrue(result.equals("Hello, Tomek!"));
+        Assert.assertTrue(result.equals("Hello, World!"));
 
     }
 

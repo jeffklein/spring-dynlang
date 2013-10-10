@@ -28,19 +28,25 @@ import java.lang.reflect.Proxy;
  * @since 2010-09-21, 23:05:20
  */
 public class JavaScriptScriptUtils {
-    public static Object createJavaScriptObject(String script, Class[] actualInterfaces) throws IOException, ScriptException {
-
-        return Proxy.newProxyInstance(ClassUtils.getDefaultClassLoader(), actualInterfaces, new JavaScriptInvocationHandler(script, actualInterfaces));
+    public static HelloService createJavaScriptObject(String script, Class[] actualInterfaces) throws IOException, ScriptException {
+        return (HelloService) Proxy.newProxyInstance(
+                ClassUtils.getDefaultClassLoader(),
+                actualInterfaces,
+                new JavaScriptInvocationHandler(script, actualInterfaces)
+        );
     }
 
     private static class JavaScriptInvocationHandler implements InvocationHandler {
         private final ScriptEngine engine;
         private final Class[] interfaces;
+        private String script;
 
         private JavaScriptInvocationHandler(String script, Class[] interfaces) throws ScriptException {
             this.interfaces = interfaces;
-            engine = new ScriptEngineManager().getEngineByName("JavaScript");
+            this.engine = new ScriptEngineManager().getEngineByName("JavaScript");
+            this.script = script;
             engine.eval(script);
+            //System.out.println(script);
         }
 
         public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
@@ -50,8 +56,8 @@ public class JavaScriptScriptUtils {
                 return this.hashCode();
             if (ReflectionUtils.isToStringMethod(method))
                 return toString();
-            System.out.println(proxy + " / " + method + " / " + args);
-            return null;
+            //System.out.println(proxy + " / " + method + " / " + args);
+            return ((Invocable) engine).invokeFunction(method.getName(), args);
         }
     }
 }
