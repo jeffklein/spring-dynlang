@@ -33,7 +33,7 @@
         <lang:property name="locale" ref="javaLocale_US"/>
     </lang:js>
 
-    <lang:js id="classpathJavascriptHelloService" script-source="classpath:Hello.js" script-interfaces="org.jeffklein.spring.dynlang.js.JavaScriptHelloService">
+    <lang:js id="classpathJavascriptHelloService" script-source="classpath:org/jeffklein/spring/dynlang/js/test/Hello.js" script-interfaces="org.jeffklein.spring.dynlang.js.JavaScriptHelloService">
         <lang:property name="date" ref="javaDate"/>
         <lang:property name="locale" ref="javaLocale_US"/>
     </lang:js>
