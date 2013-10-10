@@ -6,15 +6,25 @@
 
     <lang:js id="javaScriptHelloService" script-interfaces="org.jeffklein.spring.dynlang.js.HelloService">
         <lang:inline-script>
+            var date
             function hello(name) {
                 return "Hello, " + name + "!"
             }
 
-            function helloParameterized(name, effectiveDate, age, locale) {
-                return "" + effectiveDate + ": " + name + " (" + (age + 1) + ", " +
+            function helloParameterized(name, age, locale) {
+                return ""  + name + " (" + (age + 1) + ", " +
                 locale.getDisplayCountry(java.util.Locale.US) + ")"
             }
+            function setDate(date) {
+                this.date = date
+            }
+            function getDate() {
+                return date
+            }
         </lang:inline-script>
+        <lang:property name="date" ref="javaDate"/>
     </lang:js>
+
+    <bean id="javaDate" class="java.util.Date"/>
 
 </beans>

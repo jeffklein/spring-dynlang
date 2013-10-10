@@ -9,7 +9,6 @@ package org.jeffklein.spring.dynlang.js;
  */
 
 import org.springframework.util.ClassUtils;
-import org.springframework.util.ReflectionUtils;
 
 import javax.script.Invocable;
 import javax.script.ScriptEngine;
@@ -23,8 +22,6 @@ import java.lang.reflect.Proxy;
 public class JavaScriptInvocationHandler implements InvocationHandler {
     
     private final ScriptEngine engine;
-    private final Class[] interfaces;
-    private String script;
 
     public static HelloService createJavaScriptProxy(String script, Class[] actualInterfaces) throws IOException, ScriptException {
         return (HelloService) Proxy.newProxyInstance(
@@ -35,20 +32,12 @@ public class JavaScriptInvocationHandler implements InvocationHandler {
     }
 
     public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
-        if (ReflectionUtils.isEqualsMethod(method))
-            return equals(args[0]);
-        if (ReflectionUtils.isHashCodeMethod(method))
-            return this.hashCode();
-        if (ReflectionUtils.isToStringMethod(method))
-            return toString();
         //System.out.println(proxy + " / " + method + " / " + args);
         return ((Invocable) engine).invokeFunction(method.getName(), args);
     }
 
     private JavaScriptInvocationHandler(String script, Class[] interfaces) throws ScriptException {
-        this.interfaces = interfaces;
         this.engine = new ScriptEngineManager().getEngineByName("JavaScript");
-        this.script = script;
         engine.eval(script);
         //System.out.println(script);
     }

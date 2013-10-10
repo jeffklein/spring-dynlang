@@ -42,7 +42,7 @@ public class JavaScriptScriptFactory implements ScriptFactory {
     }
 
     public Class getScriptedObjectType(ScriptSource scriptSource) throws IOException, ScriptCompilationException {
-        return null;
+        return scriptInterfaces[0];
     }
 
     public boolean requiresScriptedObjectRefresh(ScriptSource scriptSource) {

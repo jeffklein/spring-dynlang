@@ -12,5 +12,7 @@ import java.util.Locale;
  */
 public interface HelloService {
     String hello(String name);
-    String helloParameterized(String name, Date effectiveDate, int age, Locale locale);
+    String helloParameterized(String name, int age, Locale locale);
+    void setDate(Date date);
+    Date getDate();
 }

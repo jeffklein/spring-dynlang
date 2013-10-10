@@ -8,6 +8,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
+import java.util.Date;
+import java.util.Locale;
+
 /**
  * Created with IntelliJ IDEA.
  * User: jklein
@@ -23,14 +26,30 @@ public class JavaScriptScriptFactoryHelloTest {
     private HelloService javaScriptHelloService;
 
     @Test
-    public void testHelloWorldFromJs() throws Exception {
-
+    public void testHelloFromJs() throws Exception {
         final String name = "World";
         final String result = javaScriptHelloService.hello(name);
         System.out.println("Result from JS: "+result);
         Assert.assertNotNull(result);
         Assert.assertTrue(result.equals("Hello, World!"));
-
     }
 
+    @Test
+    public void testHelloParameterizedFromJs() throws Exception {
+        final String name = "Jeff";
+        final int age = 44;
+        String result = javaScriptHelloService.helloParameterized(name, age, Locale.US);
+        System.out.println("Result from JS: "+result);
+        Assert.assertNotNull(result);
+    }
+
+    @Test
+    public void testPropertyInjection() {
+        final Date dateFromJava = new Date();
+        //javaScriptHelloService.setDate(date);
+        Date dateFromJs = javaScriptHelloService.getDate();
+        Assert.assertNotNull(dateFromJs);
+        // these are not the same date: one is created by spring. the other by this test.
+        Assert.assertNotSame(dateFromJava, dateFromJs);
+    }
 }
