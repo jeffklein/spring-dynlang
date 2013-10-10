@@ -23,8 +23,8 @@ public class JavaScriptInvocationHandler implements InvocationHandler {
     
     private final ScriptEngine engine;
 
-    public static HelloService createJavaScriptProxy(String script, Class[] actualInterfaces) throws IOException, ScriptException {
-        return (HelloService) Proxy.newProxyInstance(
+    public static JavaScriptHelloService createJavaScriptProxy(String script, Class[] actualInterfaces) throws IOException, ScriptException {
+        return (JavaScriptHelloService) Proxy.newProxyInstance(
                 ClassUtils.getDefaultClassLoader(),
                 actualInterfaces,
                 new JavaScriptInvocationHandler(script, actualInterfaces)

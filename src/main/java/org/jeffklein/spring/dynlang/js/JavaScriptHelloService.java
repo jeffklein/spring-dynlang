@@ -10,10 +10,11 @@ import java.util.Locale;
  * Time: 4:16 PM
  * To change this template use File | Settings | File Templates.
  */
-public interface HelloService {
+public interface JavaScriptHelloService {
     String hello(String name);
     double addTwoNumbers(double int1, double int2);
     void setLocale(Locale locale);
     Locale getLocale();
+    // notice there is no setDate(), but there is one on the js impls that spring injects into.
     Date getDate();
 }

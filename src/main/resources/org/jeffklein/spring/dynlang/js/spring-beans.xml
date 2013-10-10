@@ -4,7 +4,7 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
                            http://www.springframework.org/schema/lang-js classpath:org/jeffklein/spring/dynlang/js/spring-lang-3.0.xsd">
 
-    <lang:js id="inlineJavascriptHelloService" script-interfaces="org.jeffklein.spring.dynlang.js.HelloService">
+    <lang:js id="inlineJavascriptHelloService" script-interfaces="org.jeffklein.spring.dynlang.js.JavaScriptHelloService">
         <lang:inline-script>
             var date
             var locale
@@ -33,7 +33,7 @@
         <lang:property name="locale" ref="javaLocale_US"/>
     </lang:js>
 
-    <lang:js id="classpathJavascriptHelloService" script-source="classpath:Hello.js" script-interfaces="org.jeffklein.spring.dynlang.js.HelloService">
+    <lang:js id="classpathJavascriptHelloService" script-source="classpath:Hello.js" script-interfaces="org.jeffklein.spring.dynlang.js.JavaScriptHelloService">
         <lang:property name="date" ref="javaDate"/>
         <lang:property name="locale" ref="javaLocale_US"/>
     </lang:js>
