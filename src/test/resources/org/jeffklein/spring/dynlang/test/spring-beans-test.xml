@@ -11,7 +11,7 @@
             var date
             var locale
             function hello(name) {
-                return "Hello, " + name + "!"
+                return "Hello, " + name + " World!"
             }
             function addTwoNumbers(num1, num2) {
                 return num1 + num2
@@ -57,7 +57,7 @@
             var locale : Locale
 
             function hello(name : String) : String {
-                return "Hello, " + name + "!"
+                return "Hello, " + name + " World!"
             }
             function addTwoNumbers(num1 : double, num2 : double) : double {
                 return num1 + num2

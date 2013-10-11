@@ -37,11 +37,11 @@ public class GosuScriptFactoryHelloTest {
         //testHelloWorld(classpathGosuHelloService);
     }
     private void testHelloWorld(HelloService helloService) throws Exception {
-        final String name = "World";
+        final String name = "Gosu";
         final String result = helloService.hello(name);
         System.out.println("Result from Gosu: "+result);
         Assert.assertNotNull(result);
-        Assert.assertTrue(result.equals("Hello, World!"));
+        Assert.assertTrue(result.equals("Hello, Gosu World!"));
     }
 
     @Test

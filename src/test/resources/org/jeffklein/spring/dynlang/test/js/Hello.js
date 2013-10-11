@@ -1,7 +1,7 @@
 var date
 var locale
 function hello(name) {
-    return "Hello, " + name + "!"
+    return "Hello, " + name + " World!"
 }
 
 function addTwoNumbers(num1, num2) {
