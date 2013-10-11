@@ -73,5 +73,8 @@
         </lang:inline-script>
     </lang:gosu>
 
+    <bean id="javaMixedLanguageService" class="org.jeffklein.spring.dynlang.test.mixed.JavaMixedLanguageService">
+        <property name="guestLanguageService" ref="inlineGosuGuestMixedLanguageService"/>
+    </bean>
 
 </beans>
