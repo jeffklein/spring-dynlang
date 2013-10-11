@@ -1,5 +1,6 @@
-package org.jeffklein.spring.dynlang.js.test;
+package org.jeffklein.spring.dynlang.test.js;
 
+import org.jeffklein.spring.dynlang.test.HelloService;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -19,7 +20,7 @@ import java.util.Locale;
  * To change this template use File | Settings | File Templates.
  */
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration({"classpath:org/jeffklein/spring/dynlang/js/test/spring-beans-test.xml"})
+@ContextConfiguration({"classpath:org/jeffklein/spring/dynlang/test/spring-beans-test.xml"})
 public class JavaScriptScriptFactoryHelloTest {
 
     @Autowired(required = true)

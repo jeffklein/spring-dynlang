@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-       xmlns:lang="http://www.springframework.org/schema/lang-js"
+       xmlns:lang="http://www.springframework.org/schema/lang-ext"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
-                           http://www.springframework.org/schema/lang-js classpath:org/jeffklein/spring/dynlang/js/spring-lang-3.0.xsd">
+                           http://www.springframework.org/schema/lang-ext classpath:org/jeffklein/spring/dynlang/spring-lang-3.0.xsd">
 
-    <import resource="classpath:org/jeffklein/spring/dynlang/js/spring-beans.xml"/>
+    <import resource="classpath:org/jeffklein/spring/dynlang/spring-beans.xml"/>
 
-    <lang:js id="inlineJavascriptHelloService" script-interfaces="org.jeffklein.spring.dynlang.js.test.HelloService">
+    <lang:js id="inlineJavascriptHelloService" script-interfaces="org.jeffklein.spring.dynlang.test.HelloService">
         <lang:inline-script>
             var date
             var locale
@@ -36,8 +36,8 @@
     </lang:js>
 
     <lang:js id="classpathJavascriptHelloService"
-             script-source="classpath:org/jeffklein/spring/dynlang/js/test/Hello.js"
-             script-interfaces="org.jeffklein.spring.dynlang.js.test.HelloService">
+             script-source="classpath:org/jeffklein/spring/dynlang/test/js/Hello.js"
+             script-interfaces="org.jeffklein.spring.dynlang.test.HelloService">
         <lang:property name="date" ref="javaDate"/>
         <lang:property name="locale" ref="javaLocale_US"/>
     </lang:js>

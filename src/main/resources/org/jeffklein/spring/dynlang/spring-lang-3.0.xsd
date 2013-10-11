@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 
-<xsd:schema xmlns="http://www.springframework.org/schema/lang-js"
+<xsd:schema xmlns="http://www.springframework.org/schema/lang-ext"
             xmlns:xsd="http://www.w3.org/2001/XMLSchema"
             xmlns:beans="http://www.springframework.org/schema/beans"
-            targetNamespace="http://www.springframework.org/schema/lang-js"
+            targetNamespace="http://www.springframework.org/schema/lang-ext"
             elementFormDefault="qualified"
             attributeFormDefault="unqualified">
 
@@ -59,6 +59,14 @@ A Spring bean backed by a BeanShell script.
         <xsd:annotation>
             <xsd:documentation><![CDATA[
 A Spring bean backed by a JavaScript class definition.
+]]></xsd:documentation>
+        </xsd:annotation>
+    </xsd:element>
+
+    <xsd:element name="gosu" type="dynamicScriptType">
+        <xsd:annotation>
+            <xsd:documentation><![CDATA[
+A Spring bean backed by a Gosu class definition.
 ]]></xsd:documentation>
         </xsd:annotation>
     </xsd:element>

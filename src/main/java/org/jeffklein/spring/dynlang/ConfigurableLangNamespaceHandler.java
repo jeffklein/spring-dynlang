@@ -21,6 +21,7 @@ public class ConfigurableLangNamespaceHandler extends LangNamespaceHandler {
         registerScriptBeanDefinitionParser("jruby", "org.springframework.scripting.jruby.JRubyScriptFactory");
         registerScriptBeanDefinitionParser("bsh", "org.springframework.scripting.bsh.BshScriptFactory");
         registerScriptBeanDefinitionParser("js", "org.jeffklein.spring.dynlang.js.JavaScriptScriptFactory");
+        registerScriptBeanDefinitionParser("gosu", "org.jeffklein.spring.dynlang.gosu.GosuScriptFactory");
         registerBeanDefinitionParser("defaults", new ScriptingDefaultsParser());
     }
 
