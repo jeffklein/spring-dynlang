@@ -47,4 +47,45 @@
         <constructor-arg index="0" value="en" />
         <constructor-arg index="1" value="US" />
     </bean>
+
+    <lang:gosu id="inlineGosuHelloService" script-interfaces="org.jeffklein.spring.dynlang.test.HelloService">
+        <lang:inline-script>
+            uses java.util.Date
+            uses java.util.Locale
+
+            var date : Date
+            var locale : Locale
+
+            function hello(name : String) : String {
+                return "Hello, " + name + "!"
+            }
+            function addTwoNumbers(num1 : double, num2 : double) : double {
+                return num1 + num2
+            }
+            function setDate(_date : Date) {
+                print("date in Gosu: " + _date.toString() + "\n")
+                date = _date
+            }
+            function getDate() : Date {
+                return date
+            }
+            function setLocale(_locale : Locale) {
+                print("locale in Gosu: " + _locale.toString() + "\n")
+                locale = _locale
+            }
+            function getLocale() : Locale {
+                return locale
+            }
+        </lang:inline-script>
+
+        <lang:property name="date" ref="javaDate"/>
+        <lang:property name="locale" ref="javaLocale_US"/>
+    </lang:gosu>
+
+    <!--<lang:gosu id="classpathGosuHelloService"
+             script-source="org/jeffklein/spring/dynlang/test/gosu/Hello.gs"
+             script-interfaces="org.jeffklein.spring.dynlang.test.HelloService">
+        <lang:property name="date" ref="javaDate"/>
+        <lang:property name="locale" ref="javaLocale_US"/>
+    </lang:gosu>-->
 </beans>
