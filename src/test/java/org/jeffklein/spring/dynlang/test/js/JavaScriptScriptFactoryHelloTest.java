@@ -32,11 +32,11 @@ public class JavaScriptScriptFactoryHelloTest {
     private HelloService classpathJavascriptHelloService;
 
     @Test
-    public void testHelloFromJsMaster() throws Exception {
-        testHelloFromJs(inlineJavascriptHelloService);
-        testHelloFromJs(classpathJavascriptHelloService);
+    public void testHelloWorldMaster() throws Exception {
+        testHelloWorld(inlineJavascriptHelloService);
+        testHelloWorld(classpathJavascriptHelloService);
     }
-    private void testHelloFromJs(HelloService helloService) throws Exception {
+    private void testHelloWorld(HelloService helloService) throws Exception {
         final String name = "World";
         final String result = helloService.hello(name);
         System.out.println("Result from JS: "+result);
@@ -45,11 +45,11 @@ public class JavaScriptScriptFactoryHelloTest {
     }
 
     @Test
-    public void testAddTwoIntsMaster() throws Exception {
-        testAddTwoInts(inlineJavascriptHelloService);
-        testAddTwoInts(classpathJavascriptHelloService);
+    public void testAddTwoNumbersMaster() throws Exception {
+        testAddTwoNumbers(inlineJavascriptHelloService);
+        testAddTwoNumbers(classpathJavascriptHelloService);
     }
-    private void testAddTwoInts(HelloService helloService) throws Exception {
+    private void testAddTwoNumbers(HelloService helloService) throws Exception {
         final double num1 = 23.2;
         final double num2 = 44.0;
         double result = helloService.addTwoNumbers(num1, num2);
@@ -65,10 +65,10 @@ public class JavaScriptScriptFactoryHelloTest {
     }
     private void testPropertyInjection(HelloService helloService) {
         final Date dateFromJava = new Date();
-        Date dateFromJs = helloService.getDate();
-        Assert.assertNotNull(dateFromJs);
+        Date dateFromScript = helloService.getDate();
+        Assert.assertNotNull(dateFromScript);
         // these are not the same date: one is created by spring. the other by this test.
-        Assert.assertNotSame(dateFromJava.getTime(), dateFromJs.getTime());
+        Assert.assertNotSame(dateFromJava.getTime(), dateFromScript.getTime());
     }
 
     @Test

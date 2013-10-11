@@ -34,22 +34,22 @@ public class GosuScriptFactoryHelloTest {
     @Test
     public void testHelloWorldMaster() throws Exception {
         testHelloWorld(inlineGosuHelloService);
-        //testHelloFromJs(classpathGosuHelloService);
+        //testHelloWorld(classpathGosuHelloService);
     }
     private void testHelloWorld(HelloService helloService) throws Exception {
         final String name = "World";
         final String result = helloService.hello(name);
-        System.out.println("Result from gosu: "+result);
+        System.out.println("Result from Gosu: "+result);
         Assert.assertNotNull(result);
         Assert.assertTrue(result.equals("Hello, World!"));
     }
 
     @Test
-    public void testAddTwoIntsMaster() throws Exception {
-        testAddTwoInts(inlineGosuHelloService);
-        //testAddTwoInts(classpathGosuHelloService);
+    public void testAddTwoNumbersMaster() throws Exception {
+        testAddTwoNumbers(inlineGosuHelloService);
+        //testAddTwoNumbers(classpathGosuHelloService);
     }
-    private void testAddTwoInts(HelloService helloService) throws Exception {
+    private void testAddTwoNumbers(HelloService helloService) throws Exception {
         final double num1 = 23.2;
         final double num2 = 44.0;
         double result = helloService.addTwoNumbers(num1, num2);
@@ -65,10 +65,10 @@ public class GosuScriptFactoryHelloTest {
     }
     private void testPropertyInjection(HelloService helloService) {
         final Date dateFromJava = new Date();
-        Date dateFromJs = helloService.getDate();
-        Assert.assertNotNull(dateFromJs);
+        Date dateFromScript = helloService.getDate();
+        Assert.assertNotNull(dateFromScript);
         // these are not the same date: one is created by spring. the other by this test.
-        Assert.assertNotSame(dateFromJava.getTime(), dateFromJs.getTime());
+        Assert.assertNotSame(dateFromJava.getTime(), dateFromScript.getTime());
     }
 
     @Test

@@ -63,14 +63,14 @@
                 return num1 + num2
             }
             function setDate(_date : Date) {
-                print("date in Gosu: " + _date.toString() + "\n")
+                print("date in Gosu: " + _date.toString())
                 date = _date
             }
             function getDate() : Date {
                 return date
             }
             function setLocale(_locale : Locale) {
-                print("locale in Gosu: " + _locale.toString() + "\n")
+                print("locale in Gosu: " + _locale.toString())
                 locale = _locale
             }
             function getLocale() : Locale {
