@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:lang="http://www.springframework.org/schema/lang-ext"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+                           http://www.springframework.org/schema/lang-ext classpath:org/jeffklein/spring/dynlang/spring-lang-3.0.xsd">
+
+    <import resource="classpath:org/jeffklein/spring/dynlang/test/spring-beans-test.xml"/>
+
+    <lang:js id="inlineJavascriptMixedLanguageService"
+             script-interfaces="org.jeffklein.spring.dynlang.test.mixed.MixedLanguageService">
+        <lang:inline-script>
+            var guestLanguageService
+            function getLanguageName() {
+                return "JavaScript"
+            }
+            function getLanguageHierarchy() {
+                return guestLanguageService.getLanguageName() + " inside " + getLanguageName()
+            }
+            function setGuestLanguageService(service) {
+                this.guestLanguageService = service
+            }
+        </lang:inline-script>
+        <lang:property name="guestLanguageService" ref="inlineGosuGuestMixedLanguageService"/>
+    </lang:js>
+
+    <lang:js id="inlineJavascriptGuestMixedLanguageService"
+             script-interfaces="org.jeffklein.spring.dynlang.test.mixed.MixedLanguageService">
+        <lang:inline-script>
+            var guestLanguageService
+            function getLanguageName() {
+                return "JavaScript"
+            }
+            function getLanguageHierarchy() {
+                throw "I'm just a guest named: " + getLanguageName()
+            }
+        </lang:inline-script>
+    </lang:js>
+
+    <lang:gosu id="inlineGosuMixedLanguageService"
+               script-interfaces="org.jeffklein.spring.dynlang.test.mixed.MixedLanguageService">
+        <lang:inline-script>
+            uses org.jeffklein.spring.dynlang.test.mixed.MixedLanguageService
+
+            var guestLanguageService : MixedLanguageService
+
+            function getLanguageName() : String {
+                return "Gosu"
+            }
+            function getLanguageHierarchy() : String {
+                return guestLanguageService.getLanguageName() + " inside " + getLanguageName()
+            }
+            function setGuestLanguageService(service : MixedLanguageService) {
+                guestLanguageService = service
+            }
+        </lang:inline-script>
+
+        <lang:property name="guestLanguageService" ref="inlineJavascriptMixedLanguageService"/>
+    </lang:gosu>
+
+    <lang:gosu id="inlineGosuGuestMixedLanguageService"
+               script-interfaces="org.jeffklein.spring.dynlang.test.mixed.MixedLanguageService">
+        <lang:inline-script>
+            uses org.jeffklein.spring.dynlang.test.mixed.MixedLanguageService
+
+            var guestLanguageService : MixedLanguageService
+
+            function getLanguageName() : String {
+                return "Gosu"
+            }
+            function getLanguageHierarchy() : String {
+                throw "I'm just a guest named: " + getLanguageName()
+            }
+        </lang:inline-script>
+    </lang:gosu>
+
+
+</beans>
