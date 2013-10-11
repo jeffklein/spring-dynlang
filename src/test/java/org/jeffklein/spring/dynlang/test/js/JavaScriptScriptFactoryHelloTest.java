@@ -24,17 +24,17 @@ import java.util.Locale;
 public class JavaScriptScriptFactoryHelloTest {
 
     @Autowired(required = true)
-    @Qualifier(value = "inlineJavascriptHelloService")
-    private HelloService inlineJavascriptHelloService;
+    @Qualifier(value = "inlineJavaScriptHelloService")
+    private HelloService inlineJavaScriptHelloService;
 
     @Autowired(required = true)
-    @Qualifier(value = "classpathJavascriptHelloService")
-    private HelloService classpathJavascriptHelloService;
+    @Qualifier(value = "classpathJavaScriptHelloService")
+    private HelloService classpathJavaScriptHelloService;
 
     @Test
     public void testHelloWorldMaster() throws Exception {
-        testHelloWorld(inlineJavascriptHelloService);
-        testHelloWorld(classpathJavascriptHelloService);
+        testHelloWorld(inlineJavaScriptHelloService);
+        testHelloWorld(classpathJavaScriptHelloService);
     }
     private void testHelloWorld(HelloService helloService) throws Exception {
         final String name = "JavaScript";
@@ -46,8 +46,8 @@ public class JavaScriptScriptFactoryHelloTest {
 
     @Test
     public void testAddTwoNumbersMaster() throws Exception {
-        testAddTwoNumbers(inlineJavascriptHelloService);
-        testAddTwoNumbers(classpathJavascriptHelloService);
+        testAddTwoNumbers(inlineJavaScriptHelloService);
+        testAddTwoNumbers(classpathJavaScriptHelloService);
     }
     private void testAddTwoNumbers(HelloService helloService) throws Exception {
         final double num1 = 23.2;
@@ -60,8 +60,8 @@ public class JavaScriptScriptFactoryHelloTest {
 
     @Test
     public void testPropertyInjectionMaster() {
-        testPropertyInjection(inlineJavascriptHelloService);
-        testPropertyInjection(classpathJavascriptHelloService);
+        testPropertyInjection(inlineJavaScriptHelloService);
+        testPropertyInjection(classpathJavaScriptHelloService);
     }
     private void testPropertyInjection(HelloService helloService) {
         final Date dateFromJava = new Date();
@@ -73,8 +73,8 @@ public class JavaScriptScriptFactoryHelloTest {
 
     @Test
     public void testChangeLocaleViaSetterMaster() {
-        testChangeLocaleViaSetter(inlineJavascriptHelloService);
-        testChangeLocaleViaSetter(classpathJavascriptHelloService);
+        testChangeLocaleViaSetter(inlineJavaScriptHelloService);
+        testChangeLocaleViaSetter(classpathJavaScriptHelloService);
     }
     private void testChangeLocaleViaSetter(HelloService helloService) {
         Locale localeBeforeSetter = helloService.getLocale();

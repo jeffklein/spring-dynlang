@@ -1,16 +1,11 @@
 package org.jeffklein.spring.dynlang.test.mixed;
 
-import org.jeffklein.spring.dynlang.test.HelloService;
-import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-
-import java.util.Date;
-import java.util.Locale;
 
 /**
  * Created with IntelliJ IDEA.
@@ -24,8 +19,8 @@ import java.util.Locale;
 public class MixedLanguageTest {
 
     @Autowired(required = true)
-    @Qualifier(value = "inlineJavascriptMixedLanguageService")
-    private MixedLanguageService inlineJavascriptMixedLanguageService;
+    @Qualifier(value = "inlineJavaScriptMixedLanguageService")
+    private MixedLanguageService inlineJavaScriptMixedLanguageService;
 
     @Autowired(required = true)
     @Qualifier(value = "inlineGosuMixedLanguageService")
@@ -33,7 +28,7 @@ public class MixedLanguageTest {
 
     @Test
     public void testGosuInsideJavaScript() {
-        System.out.println("testGosuInsideJavaScript(): " + inlineJavascriptMixedLanguageService.getLanguageHierarchy());
+        System.out.println("testGosuInsideJavaScript(): " + inlineJavaScriptMixedLanguageService.getLanguageHierarchy());
     }
 
     @Test

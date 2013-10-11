@@ -6,7 +6,7 @@
 
     <import resource="classpath:org/jeffklein/spring/dynlang/spring-beans.xml"/>
 
-    <lang:js id="inlineJavascriptHelloService" script-interfaces="org.jeffklein.spring.dynlang.test.HelloService">
+    <lang:js id="inlineJavaScriptHelloService" script-interfaces="org.jeffklein.spring.dynlang.test.HelloService">
         <lang:inline-script>
             var date
             var locale
@@ -33,7 +33,7 @@
         <lang:property name="locale" ref="javaLocale_US"/>
     </lang:js>
 
-    <lang:js id="classpathJavascriptHelloService"
+    <lang:js id="classpathJavaScriptHelloService"
              script-source="classpath:org/jeffklein/spring/dynlang/test/js/Hello.js"
              script-interfaces="org.jeffklein.spring.dynlang.test.HelloService">
         <lang:property name="date" ref="javaDate"/>

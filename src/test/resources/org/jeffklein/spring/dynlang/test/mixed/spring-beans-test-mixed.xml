@@ -6,7 +6,7 @@
 
     <import resource="classpath:org/jeffklein/spring/dynlang/test/spring-beans-test.xml"/>
 
-    <lang:js id="inlineJavascriptMixedLanguageService"
+    <lang:js id="inlineJavaScriptMixedLanguageService"
              script-interfaces="org.jeffklein.spring.dynlang.test.mixed.MixedLanguageService">
         <lang:inline-script>
             var guestLanguageService
@@ -23,7 +23,7 @@
         <lang:property name="guestLanguageService" ref="inlineGosuGuestMixedLanguageService"/>
     </lang:js>
 
-    <lang:js id="inlineJavascriptGuestMixedLanguageService"
+    <lang:js id="inlineJavaScriptGuestMixedLanguageService"
              script-interfaces="org.jeffklein.spring.dynlang.test.mixed.MixedLanguageService">
         <lang:inline-script>
             var guestLanguageService
@@ -54,7 +54,7 @@
             }
         </lang:inline-script>
 
-        <lang:property name="guestLanguageService" ref="inlineJavascriptMixedLanguageService"/>
+        <lang:property name="guestLanguageService" ref="inlineJavaScriptMixedLanguageService"/>
     </lang:gosu>
 
     <lang:gosu id="inlineGosuGuestMixedLanguageService"
