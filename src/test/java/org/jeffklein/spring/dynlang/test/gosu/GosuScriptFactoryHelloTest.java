@@ -27,14 +27,14 @@ public class GosuScriptFactoryHelloTest {
     @Qualifier(value = "inlineGosuHelloService")
     private HelloService inlineGosuHelloService;
 
-   /* @Autowired(required = true)
+    @Autowired(required = true)
     @Qualifier(value = "classpathGosuHelloService")
-    private HelloService classpathGosuHelloService;*/
+    private HelloService classpathGosuHelloService;
 
     @Test
     public void testHelloWorldMaster() throws Exception {
         testHelloWorld(inlineGosuHelloService);
-        //testHelloWorld(classpathGosuHelloService);
+        testHelloWorld(classpathGosuHelloService);
     }
     private void testHelloWorld(HelloService helloService) throws Exception {
         final String name = "Gosu";
@@ -47,7 +47,7 @@ public class GosuScriptFactoryHelloTest {
     @Test
     public void testAddTwoNumbersMaster() throws Exception {
         testAddTwoNumbers(inlineGosuHelloService);
-        //testAddTwoNumbers(classpathGosuHelloService);
+        testAddTwoNumbers(classpathGosuHelloService);
     }
     private void testAddTwoNumbers(HelloService helloService) throws Exception {
         final double num1 = 23.2;
@@ -61,7 +61,7 @@ public class GosuScriptFactoryHelloTest {
     @Test
     public void testPropertyInjectionMaster() {
         testPropertyInjection(inlineGosuHelloService);
-        //testPropertyInjection(classpathGosuHelloService);
+        testPropertyInjection(classpathGosuHelloService);
     }
     private void testPropertyInjection(HelloService helloService) {
         final Date dateFromJava = new Date();
@@ -74,7 +74,7 @@ public class GosuScriptFactoryHelloTest {
     @Test
     public void testChangeLocaleViaSetterMaster() {
         testChangeLocaleViaSetter(inlineGosuHelloService);
-        //testChangeLocaleViaSetter(classpathGosuHelloService);
+        testChangeLocaleViaSetter(classpathGosuHelloService);
     }
     private void testChangeLocaleViaSetter(HelloService helloService) {
         Locale localeBeforeSetter = helloService.getLocale();

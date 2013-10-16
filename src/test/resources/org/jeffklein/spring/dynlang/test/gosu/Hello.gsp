@@ -1,22 +1,24 @@
-//package org.jeffklein.spring.dynlang.test.gosu
-
 uses java.util.Date
 uses java.util.Locale
-uses org.jeffklein.spring.dynlang.test.HelloService
 
-public class Hello implements HelloService {
+var date : Date
+var locale : Locale
 
-    var date : Date as readonly Date
-    var locale : Locale as Locale
-
-    function hello(name : String) : String {
-        return "Hello, " + name + "!"
-    }
-    function addTwoNumbers(num1 : double, num2 : double) : double {
-        return num1 + num2
-    }
+function hello(name : String) : String {
+    return "Hello, " + name + " World!"
 }
-
-function createHello() : HelloService {
-  return new Hello()
+function addTwoNumbers(num1 : double, num2 : double) : double {
+    return num1 + num2
+}
+function setDate(_date : Date) {
+    date = _date
+}
+function getDate() : Date {
+    return date
+}
+function setLocale(_locale : Locale) {
+    locale = _locale
+}
+function getLocale() : Locale {
+    return locale
 }

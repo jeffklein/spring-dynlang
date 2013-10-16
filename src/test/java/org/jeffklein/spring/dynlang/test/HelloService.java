@@ -11,9 +11,6 @@ import java.util.Locale;
  * To change this template use File | Settings | File Templates.
  */
 public interface HelloService {
-    interface Hello {
-      HelloService createHello();
-    }
     String hello(String name);
     double addTwoNumbers(double int1, double int2);
     void setLocale(Locale locale);

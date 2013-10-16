@@ -80,7 +80,9 @@
 
     <lang:gosu id="classpathGosuHelloService"
                script-source="classpath:org/jeffklein/spring/dynlang/test/gosu/Hello.gsp"
-               script-interfaces="org.jeffklein.spring.dynlang.test.HelloService.Hello">
+               script-interfaces="org.jeffklein.spring.dynlang.test.HelloService">
+        <lang:property name="date" ref="javaDate"/>
+        <lang:property name="locale" ref="javaLocale_US"/>
     </lang:gosu>
 
 </beans>

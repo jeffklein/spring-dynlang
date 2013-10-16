@@ -1,4 +1,4 @@
-package org.jeffklein.spring.dynlang.test.gosu;
+package org.jeffklein.spring.dynlang.test.refresh;
 
 import org.jeffklein.spring.dynlang.test.HelloService;
 import org.junit.Assert;
@@ -18,14 +18,17 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
  */
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration({"classpath:org/jeffklein/spring/dynlang/test/spring-beans-test.xml"})
-public class InstantiateGosuClassWithSpringTest {
+public class RefreshCheckDelayTest {
     /*@Autowired(required = true)
     @Qualifier(value = "classpathGosuHelloService")
     private HelloService.Hello classpathGosuHelloService;*/
 
     @Test
-    public void testInstantiateGosuClassWithSpringTest() {
-        //Assert.assertNotNull( "expecting non-null service", classpathGosuHelloService );
-        //Assert.assertNotNull( classpathGosuHelloService.createHello() );
+    public void testRefreshCheckDelay() {
+        //HelloService helloService = classpathGosuHelloService.createHello();
+        System.out.println("testRefreshCheckDelay(): looping. waiting for changes in script file...");
+        /*while (true) {
+            Assert.assertEquals("Hello, Jeff!", helloService.hello("Jeff"));
+        }*/
     }
 }

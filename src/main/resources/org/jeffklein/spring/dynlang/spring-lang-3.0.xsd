@@ -58,7 +58,7 @@ A Spring bean backed by a BeanShell script.
     <xsd:element name="js" type="dynamicScriptType">
         <xsd:annotation>
             <xsd:documentation><![CDATA[
-A Spring bean backed by a JavaScript class definition.
+A Spring bean backed by a JavaScript script.
 ]]></xsd:documentation>
         </xsd:annotation>
     </xsd:element>
@@ -66,7 +66,7 @@ A Spring bean backed by a JavaScript class definition.
     <xsd:element name="gosu" type="dynamicScriptType">
         <xsd:annotation>
             <xsd:documentation><![CDATA[
-A Spring bean backed by a Gosu class definition.
+A Spring bean backed by a Gosu program.
 ]]></xsd:documentation>
         </xsd:annotation>
     </xsd:element>
